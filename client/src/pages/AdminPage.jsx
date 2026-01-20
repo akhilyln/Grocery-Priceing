@@ -154,62 +154,62 @@ export default function AdminPage() {
     return (
         <div className="min-h-screen bg-white text-[#1a1a1a]">
             {/* Minimal Header */}
-            <header className="border-b border-[#efefef] px-8 py-4 flex items-center justify-between sticky top-0 bg-white z-50">
-                <div className="flex items-center gap-6">
-                    <h2 className="text-[17px] font-bold tracking-tight">Management Dashboard</h2>
+            <header className="border-b border-[#efefef] px-4 sm:px-8 py-4 flex items-center justify-between sticky top-0 bg-white z-50">
+                <div className="flex items-center gap-3 sm:gap-6">
+                    <h2 className="text-[15px] sm:text-[17px] font-bold tracking-tight">Admin</h2>
                     <div className="h-4 w-px bg-[#efefef]"></div>
-                    <nav className="flex gap-4">
-                        <li className="list-none text-[13px] font-medium text-[#2383e2] cursor-default bg-[#2383e20d] px-2.5 py-1 rounded">Products</li>
+                    <nav className="flex gap-2 sm:gap-4">
+                        <li className="list-none text-[12px] sm:text-[13px] font-medium text-[#2383e2] cursor-default bg-[#2383e20d] px-2.5 py-1 rounded">Products</li>
                     </nav>
                 </div>
                 <div className="flex items-center gap-3">
                     <button
                         onClick={() => { localStorage.removeItem('auth_token'); navigate('/login'); }}
-                        className="flex items-center gap-2 text-[13px] font-medium text-[#666] hover:text-[#111] transition-colors"
+                        className="flex items-center gap-2 text-[12px] sm:text-[13px] font-medium text-[#666] hover:text-[#111] transition-colors"
                     >
                         <LogOut size={16} />
-                        Sign out
+                        <span className="hidden sm:inline">Sign out</span>
                     </button>
                 </div>
             </header>
 
-            <main className="p-8 max-w-screen-2xl mx-auto">
+            <main className="p-4 sm:p-8 max-w-screen-2xl mx-auto">
                 {/* Control Bar */}
-                <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
-                    <div className="flex items-center gap-3">
-                        <div className="relative">
+                <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 mb-6 sm:mb-8">
+                    <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+                        <div className="relative flex-1 sm:flex-initial">
                             <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-[#a0a0a0]" />
                             <input
                                 type="text"
                                 placeholder="Filter by item..."
-                                className="pl-9 pr-4 py-2 bg-[#f7f7f7] border border-[#efefef] rounded-lg text-[13px] outline-none focus:bg-white focus:border-[#2383e2] transition-all w-48"
+                                className="w-full sm:w-48 pl-9 pr-4 py-2 bg-[#f7f7f7] border border-[#efefef] rounded-lg text-[13px] outline-none focus:bg-white focus:border-[#2383e2] transition-all"
                                 value={filters.item}
                                 onChange={e => setFilters({ ...filters, item: e.target.value })}
                             />
                         </div>
-                        <div className="relative">
+                        <div className="relative flex-1 sm:flex-initial">
                             <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-[#a0a0a0]" />
                             <input
                                 type="text"
                                 placeholder="Filter by brand..."
-                                className="pl-9 pr-4 py-2 bg-[#f7f7f7] border border-[#efefef] rounded-lg text-[13px] outline-none focus:bg-white focus:border-[#2383e2] transition-all w-48"
+                                className="w-full sm:w-48 pl-9 pr-4 py-2 bg-[#f7f7f7] border border-[#efefef] rounded-lg text-[13px] outline-none focus:bg-white focus:border-[#2383e2] transition-all"
                                 value={filters.brand}
                                 onChange={e => setFilters({ ...filters, brand: e.target.value })}
                             />
                         </div>
                     </div>
 
-                    <div className="flex items-center gap-2">
-                        <button onClick={handleBulkPaste} className="flex items-center gap-2 px-3 py-2 text-[13px] font-medium text-[#444] hover:bg-[#fafafa] border border-[#efefef] rounded-lg transition-colors">
+                    <div className="flex flex-wrap items-center gap-2">
+                        <button onClick={handleBulkPaste} className="flex-1 sm:flex-initial flex items-center justify-center gap-2 px-3 py-2 text-[13px] font-medium text-[#444] hover:bg-[#fafafa] border border-[#efefef] rounded-lg transition-colors">
                             <Upload size={16} />
-                            Bulk Paste
+                            <span className="sm:inline">Bulk Paste</span>
                         </button>
-                        <button onClick={exportCSV} className="flex items-center gap-2 px-3 py-2 text-[13px] font-medium text-[#444] hover:bg-[#fafafa] border border-[#efefef] rounded-lg transition-colors">
+                        <button onClick={exportCSV} className="flex-1 sm:flex-initial flex items-center justify-center gap-2 px-3 py-2 text-[13px] font-medium text-[#444] hover:bg-[#fafafa] border border-[#efefef] rounded-lg transition-colors">
                             <Download size={16} />
-                            Export CSV
+                            <span className="sm:inline">Export</span>
                         </button>
-                        <div className="w-px h-6 bg-[#efefef] mx-2"></div>
-                        <button onClick={addRow} className="flex items-center gap-2 px-4 py-2 text-[13px] font-bold text-white bg-[#2383e2] hover:bg-[#1a6dbd] rounded-lg shadow-[0_1px_2px_rgba(35,131,226,0.3)] transition-all">
+                        <div className="hidden sm:block w-px h-6 bg-[#efefef] mx-2"></div>
+                        <button onClick={addRow} className="w-full sm:w-auto flex items-center justify-center gap-2 px-4 py-2 text-[13px] font-bold text-white bg-[#2383e2] hover:bg-[#1a6dbd] rounded-lg shadow-[0_1px_2px_rgba(35,131,226,0.3)] transition-all">
                             <Plus size={16} />
                             Add Item
                         </button>
