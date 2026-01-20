@@ -1,0 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+body {
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: #ffffff;
+    color: #111111;
+}
+
+/* Custom scrollbar for Notion-like clean look */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #e2e8f0;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #cbd5e1;
+}
+
+/* Minimal Table Styles for Admin */
+.rdg {
+    --rdg-border-color: #efefef;
+    --rdg-background-color: transparent;
+    --rdg-header-background-color: #f7f7f7;
+    --rdg-row-hover-background-color: #f5f5f5;
+    --rdg-selection-color: rgba(35, 131, 226, 0.14);
+    --rdg-font-size: 14px;
+    border: 1px solid #efefef !important;
+    border-radius: 6px;
+}
+
+.rdg-header-row {
+    font-weight: 600;
+    color: #666;
+}
+
+.rdg-cell {
+    border-right: 1px solid #efefef !important;
+    border-bottom: 1px solid #efefef !important;
+}
