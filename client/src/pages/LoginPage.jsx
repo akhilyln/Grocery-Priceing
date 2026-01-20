@@ -14,7 +14,7 @@ export default function LoginPage() {
         setLoading(true);
         setError('');
         try {
-            const res = await axios.post('https://grocery-priceing-production.up.railway.app/api/login', { password });
+            const res = await axios.post('https://pulses-server.onrender.com/api/login', { password });
             if (res.data.success) {
                 localStorage.setItem('auth_token', res.data.token);
                 navigate('/admin');

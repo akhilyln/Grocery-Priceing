@@ -10,7 +10,7 @@ export default function PublicPage() {
 
     const fetchPrices = async () => {
         try {
-            const res = await axios.get('https://grocery-priceing-production.up.railway.app/api/prices');
+            const res = await axios.get('https://pulses-server.onrender.com/api/prices');
             setProducts(res.data);
             setLoading(false);
         } catch (error) {

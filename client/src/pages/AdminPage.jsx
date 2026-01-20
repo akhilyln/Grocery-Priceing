@@ -13,7 +13,7 @@ export default function AdminPage() {
 
     const fetchRows = async () => {
         try {
-            const res = await axios.get('https://grocery-priceing-production.up.railway.app/api/prices');
+            const res = await axios.get('https://pulses-server.onrender.com/api/prices');
             setRows(res.data);
         } catch (error) {
             console.error("Failed to fetch rows", error);
@@ -36,7 +36,7 @@ export default function AdminPage() {
             const row = newRows[index];
             try {
                 if (row.id) {
-                    await axios.post('https://grocery-priceing-production.up.railway.app/api/update', {
+                    await axios.post('https://pulses-server.onrender.com/api/update', {
                         id: row.id,
                         item_name: row.item_name,
                         brand_name: row.brand_name,
@@ -59,7 +59,7 @@ export default function AdminPage() {
     const addRow = async () => {
         const newItem = { item_name: 'New Item name', brand_name: 'New Brand', price: 0 };
         try {
-            const res = await axios.post('https://grocery-priceing-production.up.railway.app/api/products', newItem);
+            const res = await axios.post('https://pulses-server.onrender.com/api/products', newItem);
             setRows([...rows, res.data]);
             showStatus('success', 'Row added. Click cells to edit.');
         } catch (err) {
@@ -70,7 +70,7 @@ export default function AdminPage() {
     const deleteRow = async (id) => {
         if (!confirm('Delete this row?')) return;
         try {
-            await axios.delete(`https://grocery-priceing-production.up.railway.app/api/products/${id}`);
+            await axios.delete(`https://pulses-server.onrender.com/api/products/${id}`);
             setRows(rows.filter(r => r.id !== id));
             showStatus('success', 'Deleted');
         } catch (err) {
@@ -101,7 +101,7 @@ export default function AdminPage() {
         if (data.length === 0) return alert('Invalid clipboard data');
 
         try {
-            await axios.post('https://grocery-priceing-production.up.railway.app/api/products/bulk', data);
+            await axios.post('https://pulses-server.onrender.com/api/products/bulk', data);
             fetchRows();
             showStatus('success', `Imported ${data.length} rows`);
         } catch (err) {
