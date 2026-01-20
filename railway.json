@@ -1,0 +1,17 @@
+{
+    "$schema": "https://railway.app/railway.schema.json",
+    "services": {
+        "server": {
+            "name": "Server",
+            "source": {
+                "root": "server"
+            }
+        },
+        "client": {
+            "name": "Frontend",
+            "source": {
+                "root": "client"
+            }
+        }
+    }
+}
